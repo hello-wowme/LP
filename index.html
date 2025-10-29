@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>WowMe | 推しとファンをつなぐ動画メッセージアプリ</title>
+  <link rel="stylesheet" href="./resource/css/style.css">
+  <link rel="icon" href="./resource/img/WowMe.png">
+  <!-- Font Awesome（SNSアイコン用）-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script defer src="./resource/js/script.js"></script>
+</head>
+<body>
+  <!-- Heroセクション -->
+  <section class="hero" aria-label="Hero">
+    <video autoplay muted loop id="heroVideo" playsinline><source src="./resource/video/surprise_01.mp4" type="video/mp4"></video>
+    <div class="hero-overlay container">
+      <h1>推しが、あなたの名前を呼ぶ。</h1>
+      <p>タレント・インフルエンサー・クリエイターが<br>あなた宛ての動画メッセージを届けます。</p>
+      <a href="#about" class="btn-primary">WowMeとは</a>
+    </div>
+  </section>
+
+  <!-- WowMeとは -->
+  <section id="about" class="about container" aria-labelledby="about-heading">
+  <h2 id="about-heading">WowMeとは？</h2>
+  <p>
+    「推しから届く、あなただけの特別な動画メッセージ」をコンセプトにしたアプリ。<br>
+    推し活をもっと身近に、もっと感動的に。
+  </p>
+  <div class="ui-shots">
+    <img src="./resource/img/Preview_01-portrait.png" alt="WowMeアプリ画面1" class="ui-shot">
+    <img src="./resource/img/Preview_02-portrait.png" alt="WowMeアプリ画面2" class="ui-shot">
+    <img src="./resource/img/Preview_03-portrait.png" alt="WowMeアプリ画面3" class="ui-shot">
+  </div>
+</section>
+
+<!-- WowMeの特徴（2×2グリッド配置） -->
+<section class="features-grid container" aria-labelledby="features-grid-heading">
+  <h2 id="features-grid-heading">WowMeの4つの特徴</h2>
+  <div class="grid-box">
+    <div class="grid-item">
+      <h3>🎥 推しから届く特別な動画</h3>
+      <p>タレントやインフルエンサーが、あなたの名前を呼んでくれる動画メッセージ。世界に一つだけの体験を。</p>
+    </div>
+    <div class="grid-item">
+      <h3>🔍 カテゴリで推しを探せる</h3>
+      <p>タレント、クリエイター、VTuberなどジャンルごとに検索でき、自分の“推し”をすぐに見つけられます。</p>
+    </div>
+    <div class="grid-item">
+      <h3>💌 安心の審査制登録</h3>
+      <p>登録タレントはすべて運営による審査制。信頼できる環境で安全に推し活を楽しめます。</p>
+    </div>
+    <div class="grid-item">
+      <h3>💬 スポンサー・コラボ機能</h3>
+      <p>企業もスポンサーとして動画依頼が可能。推し活を通じたコラボの輪が広がります。</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- 体験談 -->
+  <section class="story container" aria-labelledby="story-heading">
+  <h2 id="story-heading">WowMe誕生秘話</h2>
+
+  <!-- ▼ 手紙ギミック：封筒をタップすると便箋がスライドして出てくる -->
+  <div class="letter-wrap" data-letter>
+    <!-- アクセシビリティのため、ボタン相当として扱う -->
+    <div class="envelope" role="button" tabindex="0" aria-expanded="false" aria-controls="letter-paper" aria-label="手紙を開く">
+
+      <!-- 封筒の口（フラップ） -->
+      <div class="flap" aria-hidden="true"></div>
+
+      <!-- 封筒の飾り（切手・シール等を置く場合）-->
+      <!-- <img class="stamp" src="stamp.png" alt="" aria-hidden="true"> -->
+      
+      <!-- 便箋（紙）。はじめは封筒の中に隠れている -->
+      <div id="letter-paper" class="paper" role="region" aria-label="体験談の手紙">
+        <div class="paper-content">
+          <!-- ▼ ここに実体験の文章を入れてください -->
+          <p>
+            友人の誕生日に、友人が大好きな推しの動画をサプライズで見せたことがありました。<br>
+            画面越しに友人の名前を呼ばれた瞬間、友人は目を見開いて驚き、<br>
+            そして嬉しさのあまり涙を流していました。<br>
+            その表情を見て「この感動をもっと多くの人に届けたい」と思いました。<br>
+            WowMeは、そんな“心が動く瞬間”を誰にでも届けられるアプリです。
+          </p>
+          <!-- ▼ 写真やサムネを差し込みたい場合 -->
+          <!-- <img src="birthday_story.jpg" alt="誕生日会で感動する様子" class="paper-photo"> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ヒント表示（タップで開閉） -->
+    <p class="letter-hint">タップ / クリックで手紙を開く</p>
+  </div>
+
+    <!-- ▼ noscriptフォールバック（JS無効時） -->
+    <noscript>
+      <p>
+        友人の誕生日に“友人あての推し動画”をプレゼント。<br>
+        名前を呼ばれた瞬間、驚きと嬉しさで涙がこぼれました。
+      </p>
+    </noscript>
+  </section>
+
+    <!-- ユーザー使い方（3STEP） -->
+  <section class="features container" aria-labelledby="features-heading">
+    <h2 id="features-heading">ユーザー使い方（3ステップ）</h2>
+    <div class="feature-list">
+      <article class="feature-item">
+        <!-- ▼任意のアイコン画像 -->
+        <h3>1️⃣ リクエストを送る</h3>
+        <p>推しに言ってほしいセリフを入力して指定したタレントに依頼します。</p>
+      </article>
+      <article class="feature-item">
+        <h3>2️⃣ タレントが撮影</h3>
+        <p>あなたの推しが指定されたセリフで動画を作成します。</p>
+      </article>
+      <article class="feature-item">
+        <h3>3️⃣ 限定公開で受け取る</h3>
+        <p>運営が検品後、限定公開リンクで動画をお届けします。</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- クラファン -->
+  <section class="crowdfunding container" aria-labelledby="cf-heading">
+    <h2 id="cf-heading">クラウドファンディング挑戦中！</h2>
+    <p>現在CAMPFIREで開発資金を募集中。ご支援・拡散で応援ください。</p>
+
+    <div class="btn-row">
+      <a href="https://camp-fire.jp/projects/896176/view"
+        target="_blank" rel="noopener" class="btn-primary">
+        プロジェクトを見る
+      </a>
+
+      <!-- ▼ Xで共有（ツイート編集へ） -->
+      <button type="button" id="shareX" class="btn-outline" aria-label="Xで共有">
+        <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+        Xで共有
+      </button>
+    </div>
+  </section>
+
+
+    <!-- タレントユーザー使い方（3STEP） -->
+  <section class="features container" aria-labelledby="features-heading">
+    <h2 id="features-heading">タレントユーザー使い方（3ステップ）</h2>
+    <div class="feature-list">
+      <article class="feature-item">
+        <!-- ▼任意のアイコン画像 -->
+        <h3>1️⃣ リクエストを受け取る</h3>
+        <p>ファンから届いた動画リクエスト内容（セリフ・用途など）を確認します。</p>
+      </article>
+      <article class="feature-item">
+        <h3>2️⃣ 動画を撮影・アップロード</h3>
+        <p>リクエストに沿って動画を撮影し、WowMe公式LINE（運営）に送信します。</p>
+      </article>
+      <article class="feature-item">
+        <h3>3️⃣ 運営が検品・納品</h3>
+        <p>運営による動画内容チェック後、ファンへ限定公開リンクで動画が届けられます。</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- リリース予定 -->
+  <section class="release container" aria-labelledby="release-heading">
+    <h2 id="release-heading">リリース予定</h2>
+    <p><strong>2026年10月</strong> 公開を目指して開発中。最新情報はSNSで発信します。</p>
+  </section>
+
+  <!-- フッター -->
+  <footer>
+    <div class="container footer-inner">
+      <p>© 2025 WowMe運営事務局</p>
+      <nav class="sns" aria-label="SNSリンク">
+        <a href="https://x.com/wowme_surprise" target="_blank" rel="noopener" aria-label="X">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a href="https://www.instagram.com/wowme.surprise/" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@wowme.surprise" target="_blank" rel="noopener" aria-label="note">
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

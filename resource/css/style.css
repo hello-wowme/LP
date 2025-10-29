@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap');
+
+/* ベース */
+:root{
+  --pink:#FF77AA;
+  --pink-weak:#FFF4F7;
+  --text:#333;
+  --bg:#fff;
+  --radius:16px;
+}
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family:'Noto Sans JP', system-ui, -apple-system, sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  scroll-behavior:smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+.container{
+  width:100%;
+  max-width:1080px;
+  padding-left:clamp(16px, 4vw, 32px);
+  padding-right:clamp(16px, 4vw, 32px);
+  margin:0 auto;
+}
+
+/* Hero */
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  background: linear-gradient(135deg, #FF77AA 0%, #FFB6C1 100%);
+  overflow:hidden;
+  padding-top:env(safe-area-inset-top);
+  padding-bottom:env(safe-area-inset-bottom);
+}
+#heroVideo, .hero-bg{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  filter:brightness(0.75);
+  pointer-events:none;
+  -webkit-user-drag:none; user-select:none;
+}
+.hero-overlay{
+  position:relative; z-index:1; text-align:center;
+  max-width:800px;
+}
+.hero h1{
+  font-size:clamp(28px, 5vw, 48px);
+  letter-spacing:.02em;
+  margin:0 0 .5rem;
+}
+.hero p{
+  font-size:clamp(14px, 2.5vw, 18px);
+  margin:0 0 1.25rem;
+}
+.btn-primary{
+  display:inline-block;
+  background:#fff; color:var(--pink);
+  padding:.9rem 1.4rem;
+  border-radius:999px;
+  font-weight:700;
+  text-decoration:none;
+  transition:.25s ease;
+  box-shadow:0 6px 16px rgba(0,0,0,.15);
+}
+.btn-primary:hover{ transform:translateY(-2px); background:#FFE6EE; }
+
+/* セクション */
+section{ padding: clamp(56px, 8vw, 88px) 0; }
+h2{
+  text-align:center; color:var(--pink); margin:0 0 1.25rem;
+  font-size:clamp(22px, 3.5vw, 28px);
+}
+
+/* About */
+.about p{ text-align:center; line-height:1.9; }
+
+/* ▼ ui-shot群の横並び対応 */
+.ui-shots{
+  display:flex;
+  flex-direction:column; /* デフォルト＝スマホは縦並び */
+  align-items:center;
+  gap:16px;
+  margin-top:18px;
+}
+.ui-shot{
+  width:100%; max-width:320px;
+  border-radius:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+  -webkit-user-select:none; user-select:none;
+  -webkit-touch-callout:none;
+}
+
+/* Features */
+.features .feature-list{
+  display:grid;
+  gap:clamp(14px, 3vw, 24px);
+  grid-template-columns: repeat(3, 1fr);
+}
+.feature-item{
+  background:var(--pink-weak);
+  padding:clamp(16px, 2.8vw, 22px);
+  border-radius:var(--radius);
+  text-align:center;
+  box-shadow:0 3px 8px rgba(0,0,0,.08);
+}
+.feature-item h3{ margin:0 0 .5rem; font-size:clamp(16px, 2.6vw, 18px); }
+
+/* Story */
+.story{
+  background:#FFF9FA; border-radius:var(--radius);
+}
+.story .story-thumb{
+  width:100%; max-width:680px; display:block; margin:18px auto 0; border-radius:12px;
+  -webkit-user-select:none; user-select:none; -webkit-touch-callout:none; -webkit-user-drag:none;
+}
+
+/* Crowdfunding / Release */
+.crowdfunding, .release{
+  text-align:center; background:linear-gradient(90deg, #FFE6EE 0%, #FFF 100%);
+  border-radius:var(--radius);
+}
+.release{ background:var(--pink-weak); }
+
+/* ================================
+   手紙ギミック（.story 内）
+   ================================ */
+
+.letter-wrap{
+  max-width: 640px;
+  margin: 16px auto 0;
+  text-align: center;
+}
+
+.letter-hint{
+  font-size: 0.95rem;
+  color: #888;
+  margin-top: 10px;
+}
+
+/* 封筒本体 */
+.envelope{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;              /* 封筒の比率 */
+  margin: 0 auto;
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, #fff 0%, #f6f6f6 100%);
+  /* ▼ 封筒の背景画像を使う場合は下記を有効化して画像パスを指定
+     background-image: url('envelope_texture.jpg');
+     background-size: cover;
+     background-position: center; */
+  box-shadow: 0 18px 40px rgba(0,0,0,.12), 0 4px 10px rgba(0,0,0,.06);
+  cursor: pointer;
+  overflow: hidden;
+  perspective: 1000px;              /* フラップの3D回転に奥行き */
+  -webkit-user-select: none; user-select: none;
+  touch-action: manipulation;
+}
+
+/* 封筒のフチ装飾（任意） */
+.envelope::after{
+  content:"";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
+  pointer-events: none;
+}
+
+/* 封筒のフラップ（上側の三角） */
+.flap{
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 52%;
+  background: linear-gradient(180deg, #ffe7ef 0%, #ffd3e2 100%);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transform: rotateX(0deg);
+  transition: transform .6s ease;
+  backface-visibility: hidden;
+}
+
+/* 便箋（紙） */
+.paper{
+  position: absolute;
+  left: 6%; right: 6%;
+  top: 16%;
+  /* 初期状態：封筒の中に沈めておく */
+  transform: translateY(55%);
+  opacity: 0;
+  transition: transform .65s cubic-bezier(.22,.61,.36,1), opacity .35s ease;
+  will-change: transform, opacity;
+  z-index: 2;
+}
+
+.paper-content{
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  padding: clamp(16px, 3vw, 22px);
+  text-align: left;
+  line-height: 1.9;
+  color: #333;
+  /* max-height: min(58vh, 520px); */
+  overflow: auto;
+  max-height: none;
+}
+
+/* 便箋内の写真（任意） */
+.paper-photo{
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  -webkit-user-select: none; user-select: none; -webkit-user-drag: none;
+}
+
+/* 開いた状態（.open） */
+.letter-wrap.open .flap{
+  transform: rotateX(180deg);
+}
+
+.letter-wrap.open .paper{
+  transform: translateY(-8%);
+  opacity: 1;
+}
+
+/* 「開く/閉じる」によるヒントの変化（任意） */
+.letter-wrap.open + .letter-hint{
+  opacity: .85;
+}
+
+/* 低モーション設定に配慮 */
+@media (prefers-reduced-motion: reduce){
+  .flap, .paper{
+    transition: none !important;
+  }
+}
+
+/* レスポンシブ微調整 */
+@media (max-width: 599px){
+  .paper-content{ max-height: 56vh; }
+}
+@media (min-width: 1024px){
+  .paper-content{ max-height: 62vh; }
+}
+
+
+/* Footer */
+footer{
+  background:var(--pink); color:#fff; margin-top:40px;
+}
+.footer-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px; padding:18px 0;
+}
+footer .sns a{
+  color:#fff; margin:0 8px; font-size:1.35rem; text-decoration:none; transition:.2s;
+}
+footer .sns a:hover{ opacity:.85; }
+
+/* フェードイン */
+section{ opacity:0; transform:translateY(40px); will-change:transform, opacity; }
+.fade-in{ opacity:1; transform:translateY(0); transition: all .8s ease; }
+
+/* 画像選択抑制 */
+img, video{
+  -webkit-touch-callout:none; -webkit-user-select:none; user-select:none; -webkit-user-drag:none;
+  pointer-events:auto;
+}
+
+/* ---------------------------
+   レスポンシブ
+   --------------------------- */
+
+/* モバイル（〜599px） */
+@media (max-width: 599px){
+  .features .feature-list{ grid-template-columns: 1fr; }
+  .footer-inner{ flex-direction:column; text-align:center; }
+  .ui-shots{ flex-direction:column; } /* ←スマホは縦 */
+}
+
+/* タブレット（600〜1023px） */
+@media (min-width:600px) and (max-width:1023px){
+  .features .feature-list{ grid-template-columns: repeat(2, 1fr); }
+  .ui-shots{
+    flex-direction:row; /* ←タブレットは横 */
+    justify-content:center;
+    gap:24px;
+  }
+}
+
+/* PC（1024px〜） */
+@media (min-width:1024px){
+  .features .feature-list{ grid-template-columns: repeat(3, 1fr); }
+  .ui-shots{
+    flex-direction:row; /* ←PCも横 */
+    justify-content:center;
+    gap:32px;
+  }
+}
+
+/* ========== クラファン内ボタン行 ========== */
+.btn-row{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+/* ========== アウトラインボタン ========== */
+.btn-outline{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: .85rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 700;
+  background: transparent;
+  color: var(--pink);
+  border: 2px solid var(--pink);
+  cursor: pointer;
+  transition: background-color .2s ease, color .2s ease, transform .15s ease;
+}
+.btn-outline:hover{
+  background: #FFFFFF;
+  transform: translateY(-1px);
+}
+.btn-outline:active{
+  transform: translateY(0);
+}
+.btn-outline i{ font-size: 1.1rem; line-height: 1; }
+
+/* ================================
+   WowMeの特徴（2×2グリッド）
+   ================================ */
+.features-grid{
+  text-align: center;
+  background: var(--pink-weak);
+  border-radius: var(--radius);
+  padding: clamp(56px, 8vw, 88px) 0;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+.features-grid h2{
+  color: var(--pink);
+  font-size: clamp(22px, 3.5vw, 28px);
+  margin-bottom: 40px;
+}
+.features-grid .grid-box{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.features-grid .grid-item{
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.features-grid .grid-item:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.12);
+}
+.features-grid .grid-item h3{
+  margin-bottom: 12px;
+  color: var(--pink);
+  font-size: clamp(18px, 2.8vw, 20px);
+}
+.features-grid .grid-item p{
+  font-size: clamp(14px, 2.4vw, 16px);
+  line-height: 1.8;
+  color: #444;
+}
+
+/* レスポンシブ設定（2×2配置） */
+@media (min-width: 768px){
+  .features-grid .grid-box{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
