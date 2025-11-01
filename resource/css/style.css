@@ -82,7 +82,7 @@ h2{
 /* ▼ ui-shot群の横並び対応 */
 .ui-shots{
   display:flex;
-  flex-direction:column; /* デフォルト＝スマホは縦並び */
+  flex-direction:row; /* デフォルト＝スマホは横並び */
   align-items:center;
   gap:16px;
   margin-top:18px;
@@ -96,19 +96,35 @@ h2{
 }
 
 /* Features */
-.features .feature-list{
-  display:grid;
-  gap:clamp(14px, 3vw, 24px);
-  grid-template-columns: repeat(3, 1fr);
-}
-.feature-item{
-  background:var(--pink-weak);
-  padding:clamp(16px, 2.8vw, 22px);
-  border-radius:var(--radius);
+/* ギャラリー */
+.gallery{
+  padding:80px 20px;
+  background:white;
   text-align:center;
-  box-shadow:0 3px 8px rgba(0,0,0,.08);
 }
-.feature-item h3{ margin:0 0 .5rem; font-size:clamp(16px, 2.6vw, 18px); }
+.gallery-scroll{
+  display:flex;
+  overflow-x:auto;
+  gap:20px;
+  padding:10px;
+  scroll-snap-type:x mandatory;
+}
+@media (min-width: 1024px){
+  .gallery-scroll{
+    justify-content: center;  /* 中央寄せ */
+    overflow-x: visible;      /* 横スクロール無効化 */
+  }
+}
+.gallery-scroll img{
+  flex:0 0 auto;
+  width:240px;
+  border-radius:12px;
+  scroll-snap-align:center;
+  transition:.3s;
+}
+.gallery-scroll img:hover{
+  transform:scale(1.05);
+}
 
 /* Story */
 .story{
@@ -203,13 +219,19 @@ h2{
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0,0,0,.12);
-  padding: clamp(16px, 3vw, 22px);
+  padding: clamp(16px, 3vw, 24px);
   text-align: left;
   line-height: 1.9;
   color: #333;
-  /* max-height: min(58vh, 520px); */
-  overflow: auto;
-  max-height: none;
+  max-height: min(80vh, 680px); /* ← 高さを拡張 */
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* 封筒開封時の最低高さも少し伸ばす */
+.letter-wrap.open .envelope{
+  min-height: 520px; /* ← 以前の値より+100pxほど */
+  overflow: visible;
 }
 
 /* 便箋内の写真（任意） */
