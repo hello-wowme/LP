@@ -140,18 +140,23 @@ document.addEventListener('DOMContentLoaded', onScrollFadeIn);
 
 function calcRevenue() {
   const price = Number(document.getElementById("price").value);
+  const seconds = Number(document.getElementById("seconds").value);
   const count = Number(document.getElementById("count").value);
 
-  if (!price || !count) {
-    alert("単価と本数を入力してください！");
+  if (!price || !seconds || !count) {
+    alert("金額・秒数・本数を入力してください！");
     return;
   }
 
-  const total = price * count;
-  const talent = Math.floor(total * 0.8);
-  const wowme = total - talent;
+  const total = price * count; // 総売上
+  const talent = Math.floor(total * 0.8); // タレント収益
+  const wowme = total - talent; // WowMe収益
+
+  // 秒給：タレント収益 / (1本の秒数 × 本数)
+  const persec = Math.floor(talent / (seconds * count));
 
   document.getElementById("total").innerText = total.toLocaleString();
   document.getElementById("talent").innerText = talent.toLocaleString();
   document.getElementById("wowme").innerText = wowme.toLocaleString();
+  document.getElementById("persec").innerText = persec.toLocaleString();
 }
