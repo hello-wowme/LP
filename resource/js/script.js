@@ -136,3 +136,22 @@ document.addEventListener('DOMContentLoaded', onScrollFadeIn);
     window.open(intent, '_blank', 'noopener');
   });
 })();
+
+
+function calcRevenue() {
+  const price = Number(document.getElementById("price").value);
+  const count = Number(document.getElementById("count").value);
+
+  if (!price || !count) {
+    alert("単価と本数を入力してください！");
+    return;
+  }
+
+  const total = price * count;
+  const talent = Math.floor(total * 0.8);
+  const wowme = total - talent;
+
+  document.getElementById("total").innerText = total.toLocaleString();
+  document.getElementById("talent").innerText = talent.toLocaleString();
+  document.getElementById("wowme").innerText = wowme.toLocaleString();
+}
