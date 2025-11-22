@@ -543,3 +543,43 @@ img, video{
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* === タレント募集セクション === */
+.join-talent {
+  background: linear-gradient(135deg, #FFE6EE 0%, #FFFFFF 100%);
+  text-align: center;
+  padding: 100px 20px;
+  color: var(--pink);
+  margin-bottom: 60px;
+}
+
+.join-talent h2 {
+  font-size: clamp(22px, 4vw, 28px);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.join-talent p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.btn-talent {
+  background: var(--pink);
+  color: #fff;
+  padding: 14px 40px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  transition: all .3s ease;
+  box-shadow: 0 6px 14px rgba(255, 119, 170, 0.3);
+}
+
+.btn-talent:hover {
+  background: #ff5f99;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 119, 170, 0.4);
+}
